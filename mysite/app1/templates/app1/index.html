@@ -1,0 +1,13 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'app1/style.css' %}" />
+{% if latest_question_list %}
+    <ul>
+    {% for question in latest_question_list %}
+		<li><a href="{% url 'app1:detail' question.id %}">{{ question.question_text }}</a></li>
+		<!--the 'app1:' is to define the specific app in case more apps were included in the same project-->
+	{% endfor %}
+    </ul>
+{% else %}
+    <p>No results are available.</p>
+{% endif %}
